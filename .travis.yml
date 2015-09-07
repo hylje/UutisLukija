@@ -3,3 +3,6 @@ before_install:
   - git clone https://github.com/hy-ohtu/HackerNewsUutiset.git
   - cd HackerNewsUutiset && mvn clean install
   - rm -r HackerNewsUutiset
+  - git clone https://github.com/hy-ohtu/PaivanUutiset.git
+  - cd PaivanUutiset && mvn clean install
+  - rm -r PaivanUutiset

@@ -4,3 +4,5 @@ before_install:
   - cd PaivanUutiset && mvn clean install
   - git clone https://github.com/hy-ohtu/HackerNewsUutiset.git
   - cd HackerNewsUutiset && mvn clean install
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report

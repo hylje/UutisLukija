@@ -5,4 +5,5 @@ before_install:
   - git clone https://github.com/hy-ohtu/HackerNewsUutiset.git
   - cd HackerNewsUutiset && mvn clean install
 after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+  - mvn clean cobertura:cobertura coveralls:report -DrepoToken=$COVERALLS_REPO_TOKEN
+secure: "vwCVwt2vIUIsH/Q/R3z7nKdM0XPbYMQLP8FkrdfJhfxgtJVCU/CTHSpCzR++2OcRxshDIDA+hSaaFEmZlxlNrGjDjN1pL3zn8q7i40okIYiNcqqPc3zaBxFcTR7CsiKeICCjRQphq43Wxn1CJgB+NCB92ZTDzGRLwiCR1TrkfjTBqbIuziY20ZwO0TQFNo4hiH3H+W6qGbgZWe6WSuwRUru9L/gQvk2h0pAeA6raOe0rAxknPZAatesHl70GkfH56UHDyLJZCaM04yF7LxLwRqXMvmGdObxrCplsg0ZvxFvGEhIZBWJsYnnjTrg5UEZD+htuxkF/iOs4vjoBXktrVCiiGeFAR6xjO7aSbBue3zdD0EzTEAhKArN77TbEEvxjHt2ha6Hsz75JqchxB/GMO/e7TfA4+mfaDWDHoJA+yi0n/rIOT7kpyg5p9HmkUtcmaNMklcdN53qV8h5KiojzRZCAfWNpv8jUq8yra+ohJK7NulOVRLboiJA1ytcWReMJWzvWYC1Tf6mIAjUBcze1wvMULc28d5RUMztMefMKIyWDxLQiIM19u+T/8HGahs3nzpPQUjs62Svg8Zl+U1WTXnkB2PjDSrc2KubPO/toYObECKV8Bc3Y6Na40Z8cJO63/kjMXS+my3DWAD/DBC+hF1Rme2wY00+1lg7dnHJvoZo="

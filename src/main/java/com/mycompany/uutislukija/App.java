@@ -53,12 +53,7 @@ public class App {
         if (portnum > 0) {
             spark.port(portnum);
         }
-        spark.get("/", new Route() {
-            @Override
-            public Object handle(Request req, Response res) throws Exception {
-                return "<a href=/viimeisin>Viimeisin</a> <a href=/suosituin>Suosituin</a>";
-            }
-        });
+        spark.get("/", new EtusivuRoute());
         spark.get("/viimeisin", new ViimeisinRoute(hakija));
         spark.get("/suosituin", new SuosituinRoute(hakija));
     }

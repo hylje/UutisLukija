@@ -21,7 +21,7 @@ public class Main {
         }   
         
         get("/", (req, res) -> "<a href=/viimeisin>Viimeisin</a> <a href=/suosituin>Suosituin</a>");
-        get("/viimeisin", (req, res) -> hakija.haeViimeisinUutinen());
-        get("/suosituin", (req, res) -> hakija.haeSuosituinUutinen());
+        get("/viimeisin", new ViimeisinRoute(hakija));
+        get("/suosituin", new SuosituinRoute(hakija));
     }
 }

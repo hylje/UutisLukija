@@ -12,6 +12,8 @@ public class Main {
         Map<String, String> env = System.getenv();
 	String portprop = env.get("PORT");
         PaivanUutiset hakija = new HackerPaivanUutiset();
-        new App(hakija, portprop).setUpAndRun();
+        App app = new App(new SparkAdapter(), hakija);
+        app.setPortprop(portprop);
+        app.setUpAndRun();
     }
 }

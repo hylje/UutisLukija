@@ -7,8 +7,10 @@ package com.mycompany.uutislukija;
 
 import com.mycompany.paivanuutiset.PaivanUutiset;
 import java.util.Map;
-import static spark.Spark.get;
-import static spark.Spark.port;
+import spark.Request;
+import spark.Response;
+import spark.Route;
+import spark.Spark;
 
 /**
  *
@@ -18,11 +20,16 @@ public class App {
     private final PaivanUutiset hakija;
     private int portnum;
     private String portprop;
+    private final SparkAdapter spark;
     
-    App(PaivanUutiset hakija, String portprop) {
+    App(SparkAdapter spark, PaivanUutiset hakija) {
+        this.spark = spark;
         this.hakija = hakija;
-        this.portprop = portprop;
         this.portnum = 0;
+    }
+    
+    public void setPortprop(String portprop) {
+        this.portprop = portprop;
     }
     
     public int getPortnum() {
@@ -44,10 +51,15 @@ public class App {
        
     public void run() {
         if (portnum > 0) {
-            port(portnum);
+            spark.port(portnum);
         }
-        get("/", (req, res) -> "<a href=/viimeisin>Viimeisin</a> <a href=/suosituin>Suosituin</a>");
-        get("/viimeisin", new ViimeisinRoute(hakija));
-        get("/suosituin", new SuosituinRoute(hakija));
+        spark.get("/", new Route() {
+            @Override
+            public Object handle(Request req, Response res) throws Exception {
+                return "<a href=/viimeisin>Viimeisin</a> <a href=/suosituin>Suosituin</a>";
+            }
+        });
+        spark.get("/viimeisin", new ViimeisinRoute(hakija));
+        spark.get("/suosituin", new SuosituinRoute(hakija));
     }
 }

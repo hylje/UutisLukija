@@ -50,6 +50,47 @@
             <aggregate>true</aggregate>
 	  </configuration>
 	</plugin>
+        <plugin>
+            <!-- NOTE: We don't need a groupId specification because the group is
+                 org.apache.maven.plugins ...which is assumed by default.
+            -->
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.5.5</version>
+            <configuration>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <archive>
+                    <manifest>
+                        <mainClass>com.mycompany.uutislukija.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>make-assembly</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+	<plugin>
+          <groupId>com.heroku.sdk</groupId>
+          <artifactId>heroku-maven-plugin</artifactId>
+          <version>0.5.3</version>
+	  <configuration>
+	    <appName>enigmatic-bayou-8060</appName>
+	    <processTypes>
+	      <web>java -jar ./target/UutisLukija-*-jar-with-dependencies.jar</web>
+            </processTypes>
+	    <includeTarget>false</includeTarget>
+	    <includes>
+	      <include>target/UutisLukija-*-jar-with-dependencies.jar</include>
+	    </includes>
+	  </configuration>
+	</plugin>
       </plugins>
     </build>
 </project>
